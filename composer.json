@@ -1,4 +1,4 @@
-{
+ï»¿{
     "name":         "jhuet/zdt-logger-module",
     "description":  "A ZF2 module to log data using Zend_Log and write them to ZendDeveloperTools toolbar.",
     "type":         "library",
@@ -6,7 +6,7 @@
     "keywords":     ["zf2", "log", "zdt", "module"],
     "homepage":     "https://github.com/jhuet/JhuZdtLoggerModule",
     "authors":      [ {
-        "name":     "Jérémy Huet",
+        "name":     "JÃ©rÃ©my Huet",
         "email":    "jeremy.huet@gmail.com",
         "homepage": "https://github.com/jhuet/"
     } ],
