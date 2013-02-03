@@ -1,7 +1,8 @@
 <?php
 return array(
     'jhu' => array(
-        'zdt_logger_module' => array(
+        'zdt_logger' => array(
+            'logger' => 'Zend\Log\Logger'
         ),
     ),
 

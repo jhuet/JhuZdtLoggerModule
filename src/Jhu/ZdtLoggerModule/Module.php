@@ -61,12 +61,14 @@ class Module implements
     {
         return array(
             'invokables' => array(
-                'Jhu\ZdtLoggerModule\Writer'    => 'Jhu\ZdtLoggerModule\Writer\Stack'
+                'Jhu\ZdtLoggerModule\Writer'    => 'Jhu\ZdtLoggerModule\Writer\Stack',
+                'Zend\Log\Logger'               => 'Zend\Log\Logger'
             ),
 
             'factories' => array(
                 'Jhu\ZdtLoggerModule\Logger'    => new ServiceFactory\LoggerFactory(),
                 'Jhu\ZdtLoggerModule\Collector' => new ServiceFactory\CollectorFactory(),
+                'Jhu\ZdtLoggerModule\Options'   => new ServiceFactory\ModuleOptionsFactory(),
             ),
 
             'aliases' => array(

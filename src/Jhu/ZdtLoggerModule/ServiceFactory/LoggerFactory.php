@@ -24,10 +24,12 @@ class LoggerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $options = $serviceLocator->get('Jhu\ZdtLoggerModule\Options');
+        $logger = $serviceLocator->get($options->getLogger());
+
         /* @var $writer \Jhu\ZdtLogger\Writer\Zdt */
         $writer = $serviceLocator->get('Jhu\ZdtLoggerModule\Writer');
 
-        $logger = new Logger();
         $logger->addWriter($writer);
 
         return $logger;
