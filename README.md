@@ -28,3 +28,8 @@ Use
 If you don't already have a logger in your application, you may refere to this one any time you need to via the service manager with the `jhu.zdt_logger` key. Assuming `$sm` is the service maanger, you could call `$sm->get('jhu.zdt_logger')->info('my log');` [to log](http://framework.zend.com/manual/2.1/en/modules/zend.log.overview.html#logging-messages) with the `INFO` priority.
 
 If you already have a logger in your application and you have set it in the options, you at least have to call the logger's module once via the service manager to initialize it. Then you may refere to the logger via your service manager key as it will be the same instance. I'm looking for a way to allow the use of the module without having to make that initialization call. Any help is welcome :)
+
+Picture
+=======
+
+![usage example](http://i47.tinypic.com/1zcg0so.png)
