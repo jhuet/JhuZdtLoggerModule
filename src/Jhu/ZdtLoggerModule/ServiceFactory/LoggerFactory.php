@@ -20,12 +20,18 @@ class LoggerFactory implements FactoryInterface
     /**
      * {@inheritDoc}
      *
-     * @return Zend\Log\Logger
+     * @throws \InvalidArgumentException
+     *
+     * @return \Zend\Log\Logger
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $options = $serviceLocator->get('Jhu\ZdtLoggerModule\Options');
         $logger = $serviceLocator->get($options->getLogger());
+
+        if (! $logger instanceof Logger) {
+            throw new \InvalidArgumentException('`logger` option of JhuZdtLoggerModule has to be an instance or extend Zend\Log\Logger class.');
+        }
 
         /* @var $writer \Jhu\ZdtLogger\Writer\Zdt */
         $writer = $serviceLocator->get('Jhu\ZdtLoggerModule\Writer');
