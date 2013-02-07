@@ -27,6 +27,7 @@ class LoggerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $options = $serviceLocator->get('Jhu\ZdtLoggerModule\Options');
+        /* @var $logger \Zend\Log\Logger */
         $logger = $serviceLocator->get($options->getLogger());
 
         if (! $logger instanceof Logger) {

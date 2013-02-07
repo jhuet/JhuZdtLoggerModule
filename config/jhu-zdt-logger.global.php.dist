@@ -10,7 +10,8 @@ $settings = array(
      * The logger that will be used. This module will only add a writer to it
      * so if you already have a logger in your application, you can set it here.
      *
-     * The logger you'll set here has to be available thru the service manager.
+     * The logger you'll set here has to be available thru the service manager
+     * and be an instance or extend Zend\Log\Logger.
      */
     'logger' => 'Zend\Log\Logger'
 );
