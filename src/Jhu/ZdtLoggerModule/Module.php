@@ -8,6 +8,7 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\InitProviderInterface;
+use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\ModuleManagerInterface;
 
 /**
@@ -19,6 +20,7 @@ use Zend\ModuleManager\ModuleManagerInterface;
  */
 class Module implements
     AutoloaderProviderInterface,
+    BootstrapListenerInterface,
     ConfigProviderInterface,
     ServiceProviderInterface,
     InitProviderInterface
@@ -35,6 +37,23 @@ class Module implements
         } );
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function onBootstrap(EventInterface $e)
+    {
+        $config = $e->getParam('config');
+
+        // If the default logger is different, we initialize ours to add our functionalities
+        if ($config['jhu']['zdt_logger']['logger'] != 'Zend\Log\Logger') {
+            $application = $e->getParam('application');
+            $application->getServiceManager()->get('jhu.zdt_logger');
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getAutoloaderConfig()
     {
         return array(
@@ -49,6 +68,9 @@ class Module implements
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getConfig()
     {
         return include __DIR__ . '/../../../config/module.config.php';
