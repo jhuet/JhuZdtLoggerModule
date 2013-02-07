@@ -15,9 +15,15 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class ModuleOptionsFactory implements FactoryInterface
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @return \Jhu\ZdtLoggerModule\Options\ModuleOptions
+     */
     public function createService(ServiceLocatorInterface $services)
     {
         $config = $services->get('Configuration');
+
         return new Options\ModuleOptions(isset($config['jhu']['zdt_logger']) ? $config['jhu']['zdt_logger'] : array());
     }
 }

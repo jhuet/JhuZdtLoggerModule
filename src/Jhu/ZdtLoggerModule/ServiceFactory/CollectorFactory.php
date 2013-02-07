@@ -20,7 +20,7 @@ class CollectorFactory implements FactoryInterface
     /**
      * {@inheritDoc}
      *
-     * @return Jhu\ZdtLoggerModule\Collector\ZendWriterCollector
+     * @return \Jhu\ZdtLoggerModule\Collector\ZendWriterCollector
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
