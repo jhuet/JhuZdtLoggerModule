@@ -7,9 +7,9 @@ ___
 Installation
 ============
 
-The easiest way is by using [composer](http://getcomposer.org). Just add `"jhuet/zdt-logger-module": "dev-master"` (or `"jhuet/zdt-logger-module": "0.2"` for last stable version) as a requirement in your `composer.json` file and it will be automatically downloaded next time you do `composer.phar update`.
+The easiest way is by using [composer](http://getcomposer.org). Just add `"jhuet/zdt-logger-module": "dev-master"` (or `"jhuet/zdt-logger-module": "0.3"` for last stable version) as a requirement in your `composer.json` file and it will be automatically downloaded next time you do `composer.phar update`.
 
-If you don't use composer, drop the files of [this archive](https://github.com/jhuet/JhuZdtLoggerModule/archive/master.zip) ([0.2 here](https://github.com/jhuet/JhuZdtLoggerModule/archive/0.2.zip)) in your `module` directory.
+If you don't use composer, drop the files of [this archive](https://github.com/jhuet/JhuZdtLoggerModule/archive/master.zip) ([0.3 here](https://github.com/jhuet/JhuZdtLoggerModule/archive/0.3.zip)) in your `module` directory.
 
 Then, add `Jhu\ZdtLoggerModule` in the list of activated modules of your `application.config.php` file.
 
