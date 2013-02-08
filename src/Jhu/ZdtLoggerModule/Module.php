@@ -42,11 +42,15 @@ class Module implements
      */
     public function onBootstrap(EventInterface $e)
     {
-        $config = $e->getParam('config');
+        $application = $e->getParam('application');
+        $config = $application->getServiceManager()->get('Config');
 
-        // If the default logger is different, we initialize ours to add our functionalities
-        if ($config['jhu']['zdt_logger']['logger'] != 'Zend\Log\Logger') {
-            $application = $e->getParam('application');
+        // If the default logger is different and ZDT's toolbar is activated,
+        // we initialize ours to add our functionalities
+        if (
+            $config['jhu']['zdt_logger']['logger'] != 'Zend\Log\Logger' &&
+            $config['zenddevelopertools']['toolbar']['enabled'] == true
+        ) {
             $application->getServiceManager()->get('jhu.zdt_logger');
         }
     }
