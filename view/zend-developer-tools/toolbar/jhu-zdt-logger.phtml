@@ -7,7 +7,7 @@
     </div>
     <div class="zdt-toolbar-detail">
         <span class="zdt-toolbar-info zdt-toolbar-info-heading">ZF2 logs</span>
-        <span class="zdt-toolbar-info zdt-toolbar-info-jhu-log">
+        <div class="zdt-toolbar-detail-inner zdt-toolbar-info-jhu-log">
         <?php foreach ($this->collector->getLogs() as $log): ?>
             <hr />
 
@@ -45,7 +45,7 @@
                 <span class="clear"></span>
             <?php endif ?>
         <?php endforeach ?>
-        </span>
+        </div>
     </div>
 </div>
 <style>
