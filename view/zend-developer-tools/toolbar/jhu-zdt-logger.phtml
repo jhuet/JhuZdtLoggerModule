@@ -38,8 +38,8 @@
             <?php if (isset($log['extra']) && !empty($log['extra'])): ?>
                 <span class="zdt-detail-label">Extra</span>
                 <span class="zdt-detail-value">
-                    <?php foreach($query['extra'] as $key => $value): ?>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $key ?> => <?php var_dump($value) ?><br/>
+                    <?php foreach($log['extra'] as $key => $value): ?>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $key ?> =&gt; <?php var_dump($value) ?><br/>
                     <?php endforeach ?>
                 </span>
                 <span class="clear"></span>
