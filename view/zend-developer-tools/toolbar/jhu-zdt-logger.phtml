@@ -8,85 +8,68 @@
     <div class="zdt-toolbar-detail">
         <span class="zdt-toolbar-info zdt-toolbar-info-heading">ZF2 logs</span>
         <div class="zdt-toolbar-detail-inner zdt-toolbar-info-jhu-log">
-        <?php foreach ($this->collector->getLogs() as $log): ?>
-            <hr />
+            <?php foreach ($this->collector->getLogs() as $log): ?>
+                <hr />
 
-            <?php if (isset($log['timestamp'])): ?>
-                <span class="zdt-detail-label">Timestamp</span>
-                <span class="zdt-detail-value">
-                    <?php echo $log['timestamp']->format('Y-m-d H:i:s') ?>
-                </span>
-                <span class="clear"></span>
-            <?php endif ?>
+                <?php if (isset($log['timestamp'])): ?>
+                    <span class="zdt-toolbar-info">
+                        <span class="zdt-detail-label">Timestamp</span>
+                        <span class="zdt-detail-value">
+                        <?php echo $log['timestamp']->format('Y-m-d H:i:s') ?>
+                    </span>
+                    <span class="zdt-clear-jhu-log"></span>
+                <?php endif ?>
 
-            <?php if (isset($log['priority']) && isset($log['priorityName'])): ?>
-                <span class="zdt-detail-label">Priority</span>
-                <span class="zdt-detail-value">
-                    <?php echo $log['priorityName'] ?> (<?php echo $log['priority'] ?>)
-                </span>
-                <span class="clear"></span>
-            <?php endif ?>
+                <?php if (isset($log['priority']) && isset($log['priorityName'])): ?>
+                    <span class="zdt-toolbar-info">
+                        <span class="zdt-detail-label">Priority</span>
+                        <span class="zdt-detail-value">
+                        <?php echo $log['priorityName'] ?> (<?php echo $log['priority'] ?>)
+                    </span>
+                    <span class="zdt-clear-jhu-log"></span>
+                <?php endif ?>
 
-            <?php if (isset($log['message'])): ?>
-                <span class="zdt-detail-label">Message</span>
-                <span class="zdt-detail-value zdt-detail-value-jhu-log-message">
-                    <?php echo $log['message'] ?>
-                </span>
-                <span class="clear"></span>
-            <?php endif ?>
+                <?php if (isset($log['message'])): ?>
+                    <span class="zdt-toolbar-info">
+                        <span class="zdt-detail-label">Message</span>
+                        <span class="zdt-detail-value zdt-detail-value-jhu-log-message">
+                        <?php echo nl2br($log['message']) ?>
+                    </span>
+                    <span class="zdt-clear-jhu-log"></span>
+                <?php endif ?>
 
-            <?php if (isset($log['extra']) && !empty($log['extra'])): ?>
-                <span class="zdt-detail-label">Extra</span>
-                <span class="zdt-detail-value">
-                    <?php foreach($log['extra'] as $key => $value): ?>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $key ?> =&gt; <?php var_dump($value) ?><br/>
-                    <?php endforeach ?>
-                </span>
-                <span class="clear"></span>
-            <?php endif ?>
-        <?php endforeach ?>
+                <?php if (isset($log['extra']) && !empty($log['extra'])): ?>
+                    <span class="zdt-toolbar-info">
+                        <span class="zdt-detail-label">Extra</span>
+                        <span class="zdt-detail-value">
+                        <?php foreach($log['extra'] as $key => $value): ?>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $key ?> =&gt; <?php var_dump($value) ?><br/>
+                        <?php endforeach ?>
+                    </span>
+                    <span class="zdt-clear-jhu-log"></span>
+                <?php endif ?>
+            <?php endforeach ?>
         </div>
     </div>
 </div>
-<style>
-/*
+<style type="text/css">
+    .zdt-clear-jhu-log {
+        clear: both;
+        display: block;
+    }
 
-.zdt-toolbar-entry .zdt-toolbar-detail .ddt-detail-query {
+    .zdt-toolbar-entry .zdt-toolbar-detail .zdt-toolbar-info-jhu-log {
+        font-size: 11px;
+        max-width: 600px;
+        width: 600px;
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
 
-    white-space: normal;
-    width: 400px;
-}
-
-.zdt-toolbar-entry .zdt-toolbar-detail .ddt-detail-query .highlight {
-
-    color: #80DC09;
-    font-weight: bold;
-}
-*/
-.zdt-toolbar-entry .zdt-toolbar-info .clear {
-
-    clear: both;
-    display: block;
-}
-
-.zdt-toolbar-entry .zdt-toolbar-detail .zdt-toolbar-info-jhu-log {
-
-    font-size: 11px;
-    max-width: 600px;
-    witdh: 600px;
-    max-height: 300px;
-    overflow-y: auto;
-    overflow-x: auto;
-}
-
-/*.zdt-toolbar-info .zdt-detail-value-jhu-log-message {
-    white-space: normal;
-}*/
-
-.zdt-toolbar-entry .zdt-toolbar-detail hr {
-
-    border: 0;
-    border-top: 1px solid #80DC09;
-    clear: both;
-}
+    .zdt-toolbar-entry .zdt-toolbar-detail hr {
+        border: 0;
+        border-top: 1px solid #80DC09;
+        clear: both;
+    }
 </style>
