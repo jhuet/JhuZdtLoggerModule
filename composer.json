@@ -1,20 +1,19 @@
 {
     "name":         "jhuet/zdt-logger-module",
-    "description":  "A ZF2 module to log data using Zend_Log and write them to ZendDeveloperTools toolbar.",
+    "description":  "A ZF3 module to log data using Zend\\Log and write them to ZendDeveloperTools toolbar.",
     "type":         "library",
     "license":      "MIT",
-    "keywords":     ["zf2", "log", "zdt", "module"],
+    "keywords":     ["zf3", "log", "zdt", "module"],
     "homepage":     "https://github.com/jhuet/JhuZdtLoggerModule",
     "authors":      [ {
         "name":     "Jérémy Huet",
         "email":    "jeremy.huet@gmail.com",
         "homepage": "https://github.com/jhuet/"
     } ],
-    "minimum-stability": "dev",
     "require":      {
-        "php": ">=5.3.3",
         "zendframework/zend-log":  "2.*",
-        "zendframework/zend-developer-tools": "dev-master"
+        "zendframework/zend-developer-tools": "^1.1.0",
+        "zendframework/zend-servicemanager": "3.*"
     },
     "require-dev": {
         "atoum/atoum": "dev-master"

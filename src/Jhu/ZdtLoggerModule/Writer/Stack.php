@@ -20,17 +20,7 @@ class Stack extends AbstractWriter
      *
      * @var array
      */
-    protected $stack;
-
-    /**
-     * Constructor
-     */
-    public function __construct($options = null)
-    {
-        parent::__construct($options);
-
-        $this->stack = array();
-    }
+    protected $stack = [];
 
     /**
      * @return array

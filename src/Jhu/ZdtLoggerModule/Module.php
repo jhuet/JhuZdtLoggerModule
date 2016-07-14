@@ -43,7 +43,7 @@ class Module implements
     public function onBootstrap(EventInterface $e)
     {
         $application = $e->getParam('application');
-        $config = $application->getServiceManager()->get('Config');
+        $config      = $application->getServiceManager()->get('Config');
 
         // If the default logger is different and ZDT's toolbar is activated,
         // we initialize ours to add our functionalities
@@ -60,16 +60,16 @@ class Module implements
      */
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
+        return [
+            'Zend\Loader\ClassMapAutoloader' => [
                 __DIR__ . '/../../../autoload_classmap.php',
-            ),
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+            ],
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/../../../src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -85,21 +85,21 @@ class Module implements
      */
     public function getServiceConfig()
     {
-        return array(
-            'invokables' => array(
-                'Jhu\ZdtLoggerModule\Writer'    => 'Jhu\ZdtLoggerModule\Writer\Stack',
-                'Zend\Log\Logger'               => 'Zend\Log\Logger'
-            ),
+        return [
+            'invokables' => [
+                'Jhu\ZdtLoggerModule\Writer'    => Writer\Stack::class,
+                'Zend\Log\Logger'               => \Zend\Log\Logger::class,
+            ],
 
-            'factories' => array(
+            'factories' => [
                 'Jhu\ZdtLoggerModule\Logger'    => new ServiceFactory\LoggerFactory(),
                 'Jhu\ZdtLoggerModule\Collector' => new ServiceFactory\CollectorFactory(),
                 'Jhu\ZdtLoggerModule\Options'   => new ServiceFactory\ModuleOptionsFactory(),
-            ),
+            ],
 
-            'aliases' => array(
+            'aliases' => [
                 'jhu.zdt_logger' => 'Jhu\ZdtLoggerModule\Logger',
-            ),
-        );
+            ],
+        ];
     }
 }
