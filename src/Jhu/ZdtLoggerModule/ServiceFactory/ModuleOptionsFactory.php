@@ -2,9 +2,9 @@
 
 namespace Jhu\ZdtLoggerModule\ServiceFactory;
 
+use Interop\Container\ContainerInterface;
 use Jhu\ZdtLoggerModule\Options;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * @since   0.1
@@ -18,12 +18,12 @@ class ModuleOptionsFactory implements FactoryInterface
     /**
      * {@inheritDoc}
      *
-     * @return \Jhu\ZdtLoggerModule\Options\ModuleOptions
+     * @return Options\ModuleOptions
      */
-    public function createService(ServiceLocatorInterface $services)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $config = $services->get('Configuration');
+        $config = $container->get('Configuration');
 
-        return new Options\ModuleOptions(isset($config['jhu']['zdt_logger']) ? $config['jhu']['zdt_logger'] : array());
+        return new Options\ModuleOptions(isset($config['jhu']['zdt_logger']) ? $config['jhu']['zdt_logger'] : []);
     }
 }

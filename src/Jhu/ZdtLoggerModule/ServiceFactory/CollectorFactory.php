@@ -2,9 +2,10 @@
 
 namespace Jhu\ZdtLoggerModule\ServiceFactory;
 
+use Interop\Container\ContainerInterface;
 use Jhu\ZdtLoggerModule\Collector\ZendWriterCollector;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\FactoryInterface;
+use Jhu\ZdtLoggerModule\Writer\Stack as StackWriter;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Zdt Collector factory
@@ -22,10 +23,10 @@ class CollectorFactory implements FactoryInterface
      *
      * @return \Jhu\ZdtLoggerModule\Collector\ZendWriterCollector
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /* @var $writer \Jhu\ZdtLogger\Writer\Zdt */
-        $writer = $serviceLocator->get('Jhu\ZdtLoggerModule\Writer');
+        $writer = $container->get('Jhu\ZdtLoggerModule\Writer');
+        /* @var $writer StackWriter */
 
         return new ZendWriterCollector($writer, 'jhu_zdt_logger');
     }

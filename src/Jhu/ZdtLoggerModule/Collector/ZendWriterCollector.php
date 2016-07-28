@@ -4,9 +4,7 @@ namespace Jhu\ZdtLoggerModule\Collector;
 
 use ZendDeveloperTools\Collector\CollectorInterface;
 use ZendDeveloperTools\Collector\AutoHideInterface;
-
 use Zend\Mvc\MvcEvent;
-
 use Jhu\ZdtLoggerModule\Writer\Stack as StackWriter;
 
 /**
@@ -24,7 +22,7 @@ class ZendWriterCollector implements CollectorInterface, AutoHideInterface
     const PRIORITY = 10;
 
     /**
-     * @var \Jhu\ZdtLoggerModule\Writer\Stack
+     * @var StackWriter
      */
     protected $zendWriter;
 
@@ -34,13 +32,13 @@ class ZendWriterCollector implements CollectorInterface, AutoHideInterface
     protected $name;
 
     /**
-     * @param Jhu\ZdtLoggerModule\Writer\Stack  $zendWriter
-     * @param string                            $name
+     * @param StackWriter  $zendWriter
+     * @param string       $name
      */
     public function __construct(StackWriter $zendWriter, $name)
     {
         $this->zendWriter = $zendWriter;
-        $this->name = (string) $name;
+        $this->name       = (string) $name;
     }
 
     /**

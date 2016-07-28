@@ -2,9 +2,11 @@
 
 namespace Jhu\ZdtLoggerModule\ServiceFactory;
 
+use Interop\Container\ContainerInterface;
 use Zend\Log\Logger;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Exception\ServiceNotCreatedException;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Jhu\ZdtLoggerModule\Writer\Stack as StackWriter;
 
 /**
  * Zdt Logger factory
@@ -20,22 +22,20 @@ class LoggerFactory implements FactoryInterface
     /**
      * {@inheritDoc}
      *
-     * @throws \InvalidArgumentException
-     *
-     * @return \Zend\Log\Logger
+     * @return Logger
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $options = $serviceLocator->get('Jhu\ZdtLoggerModule\Options');
-        /* @var $logger \Zend\Log\Logger */
-        $logger = $serviceLocator->get($options->getLogger());
-
+        $options = $container->get('Jhu\ZdtLoggerModule\Options');
+        $logger  = $container->get($options->getLogger());
         if (! $logger instanceof Logger) {
-            throw new \InvalidArgumentException('`logger` option of JhuZdtLoggerModule has to be an instance or extend Zend\Log\Logger class.');
+            throw new ServiceNotCreatedException(
+                '`logger` option of JhuZdtLoggerModule has to be an instance or extend Zend\Log\Logger class.'
+            );
         }
 
-        /* @var $writer \Jhu\ZdtLogger\Writer\Zdt */
-        $writer = $serviceLocator->get('Jhu\ZdtLoggerModule\Writer');
+        $writer = $container->get('Jhu\ZdtLoggerModule\Writer');
+        /* @var $writer StackWriter */
 
         $logger->addWriter($writer);
 

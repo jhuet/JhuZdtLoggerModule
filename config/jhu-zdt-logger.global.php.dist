@@ -5,7 +5,7 @@
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
  */
-$settings = array(
+$settings = [
     /**
      * The logger that will be used. This module will only add a writer to it
      * so if you already have a logger in your application, you can set it here.
@@ -14,13 +14,13 @@ $settings = array(
      * and be an instance or extend Zend\Log\Logger.
      */
     'logger' => 'Zend\Log\Logger'
-);
+];
 
 /**
  * You do not need to edit below this line
  */
-return array(
-    'jhu' => array(
+return [
+    'jhu' => [
         'zdt_logger' => $settings
-    )
-);
+    ]
+];

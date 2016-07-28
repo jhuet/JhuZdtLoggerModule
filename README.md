@@ -1,7 +1,7 @@
 JhuZdtLoggerModule
 ==================
 
-A ZF2 module to log data using [Zend\Log](http://framework.zend.com/manual/2.1/en/modules/zend.log.overview.html) and write them to [ZendDeveloperTools](https://github.com/zendframework/ZendDeveloperTools) toolbar. If you already have a logger in your application (that is an instance of `Zend\Log\Logger`) it will integrate well with it so you still will only have to use your logger.
+A ZF3 module to log data using [Zend\Log](http://framework.zend.com/manual/2.1/en/modules/zend.log.overview.html) and write them to [ZendDeveloperTools](https://github.com/zendframework/ZendDeveloperTools) toolbar. If you already have a logger in your application (that is an instance of `Zend\Log\Logger`) it will integrate well with it so you still will only have to use your logger.
 ___
 
 Installation
